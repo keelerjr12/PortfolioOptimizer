@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[GISCSector]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(128) NOT NULL
+)

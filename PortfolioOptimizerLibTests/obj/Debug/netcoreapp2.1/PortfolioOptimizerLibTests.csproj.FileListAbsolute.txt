@@ -1,0 +1,14 @@
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.deps.json
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.runtimeconfig.json
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.runtimeconfig.dev.json
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.dll
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\bin\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.pdb
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.csprojAssemblyReference.cache
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.csproj.CoreCompileInputs.cache
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.AssemblyInfoInputs.cache
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.AssemblyInfo.cs
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.dll
+C:\Users\Joshua\source\repos\PortfolioOptimizer\PortfolioOptimizerLibTests\obj\Debug\netcoreapp2.1\PortfolioOptimizerLibTests.pdb

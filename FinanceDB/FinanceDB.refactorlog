@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c7f8e18e-d397-42d7-aec9-ed36c2db3e41" ChangeDateTime="06/02/2019 01:30:25">
+    <Property Name="ElementName" Value="[dbo].[ConsumerPriceIndex].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ConsumerPriceIndex]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Date" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c138ac3e-dbd6-4dc2-98ce-07419222c9f2" ChangeDateTime="06/03/2019 14:48:21">
+    <Property Name="ElementName" Value="[dbo].[EPS_Diluted].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EPS_Diluted]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Date" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="258ab552-34ce-4ce4-8026-6b17f55b7b23" ChangeDateTime="06/03/2019 14:48:35">
+    <Property Name="ElementName" Value="[dbo].[EPS_Diluted].[Date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EPS_Diluted]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QuarterEnd" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ec1c4148-083b-4bc4-b238-09b83e56e5b0" ChangeDateTime="06/11/2019 01:41:51">
+    <Property Name="ElementName" Value="[dbo].[DailyStockPrice].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DailyStockPrice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Ticker" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7ef0a816-e3c2-429a-b55d-5a9ec8a9c9db" ChangeDateTime="06/12/2019 20:42:44">
+    <Property Name="ElementName" Value="[dbo].[SP500_Companies].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SP500_Companies]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Company_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8b12776d-5c9b-48c4-960f-2d06b31f592b" ChangeDateTime="06/12/2019 20:44:43">
+    <Property Name="ElementName" Value="[dbo].[Company].[SectorId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Company]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Sector_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e8270660-2b90-4e5e-9414-6d2d998630ed" ChangeDateTime="06/12/2019 20:45:33">
+    <Property Name="ElementName" Value="[dbo].[GISC_Sector].[Sector]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GISC_Sector]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e4b828c-3d32-4ab0-b785-5ff4c56b13e5" ChangeDateTime="06/13/2019 13:09:11">
+    <Property Name="ElementName" Value="[dbo].[Company].[Sector_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Company]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SectorId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28d580ce-27d9-4f73-90f3-b3477db528cb" ChangeDateTime="06/13/2019 13:10:23">
+    <Property Name="ElementName" Value="[dbo].[SP500Companies].[Company_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SP500Companies]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CompanyId" />
+  </Operation>
+</Operations>
