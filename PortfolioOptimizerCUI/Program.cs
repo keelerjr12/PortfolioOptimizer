@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Net.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PortfolioOptimizerCUI.Services;
@@ -15,6 +16,8 @@ namespace PortfolioOptimizerCUI
             collection.AddScoped<PortfolioOptimizerApp>();
             collection.AddScoped<Controller>();
             collection.AddScoped<View>();
+
+            collection.AddScoped<HttpClient>();
 
             collection.AddTransient<CAPEService>();
             collection.AddTransient<ConsumerPriceIndexService>();

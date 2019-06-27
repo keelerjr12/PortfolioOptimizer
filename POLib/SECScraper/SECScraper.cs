@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,11 +7,9 @@ namespace POLib.SECScraper
 {
     public class SECScraper
     {
-        private int _numDownloaded;
-        private int _interval;
-        private readonly List<Task> _tasks = new List<Task>();
-        public SECScraper(FinanceContext financeContext)
+        public SECScraper(HttpClient client, FinanceContext financeContext)
         {
+            _client = client;
             _financeContext = financeContext;
         }
 
@@ -21,49 +18,45 @@ namespace POLib.SECScraper
             _numDownloaded = 0;
             _interval = _financeContext.Companies.Count() / 10;
 
-            /*foreach (var company in _financeContext.Companies)
-            {
-                // Console.WriteLine(company.Ticker + " " + company.Name);
-                //Task.Run(() => RetrieveSECData(company.CIK));
-                _tasks.Add(Task.Factory.StartNew(() => RetrieveSECData(company.CIK)));
-            }*/
-
-            Parallel.ForEach(_financeContext.Companies, new ParallelOptions() {MaxDegreeOfParallelism = 6},
-                async company =>
+            Parallel.ForEach(_financeContext.Companies, new ParallelOptions {MaxDegreeOfParallelism = 6},
+                company =>
                 {
-                    await RetrieveSECData(company.CIK);
-                    await Task.Delay(250);
+                    RetrieveSECData(company.CIK);
+                    Task.Delay(175);
                 });
         }
 
-        private async Task RetrieveSECData(int cik)
+        private void RetrieveSECData(int cik)
         {
+            // move this url elsewhere
             var url = "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=" + cik +
                       "&type=10-q&dateb=&owner=include&count=100";
 
-            var body = await ReadHTMLAsync(url);
-            var srPage = new SearchResultsPage(body);
+            var srBody = ReadHTML(url).Result; // consider moving this to srPage
+            var srPage = new SearchResultsPage(srBody);
 
-            var reportLinks = srPage.RetrieveAllReportLinks();
+            var reportLinks = srPage.GetAllReportLinks();
 
-            /*foreach (var link in reportLinks)
+            foreach (var link in reportLinks)
             {
-                Console.WriteLine(link);
-            }*/
+                url = "https://www.sec.gov" + link;
+                //Console.WriteLine(url);
+
+                var fdBody = ReadHTML(url).Result;
+                var fdPage = new FilingDetailsPage(fdBody);
+
+                var xbrlLink = fdPage.GetInstanceDocumentLink();
+                //Console.WriteLine(xbrlLink);
+            }
 
             _numDownloaded++;
             DisplayLoadingText();
         }
 
-        private async Task<string> ReadHTMLAsync(string url)
+        private async Task<string> ReadHTML(string url)
         {
-            string body;
-
-            using (var client = new HttpClient())
-            {
-                var response = await client.GetAsync(url);
-                body = await response.Content.ReadAsStringAsync();
-            }
+            var response = await _client.GetAsync(url);
+            var body = await response.Content.ReadAsStringAsync();
 
             return body;
         }
@@ -76,6 +69,9 @@ namespace POLib.SECScraper
             }
         }
 
+        private readonly HttpClient _client;
         private readonly FinanceContext _financeContext;
+        private int _numDownloaded;
+        private int _interval;
     }
 }
