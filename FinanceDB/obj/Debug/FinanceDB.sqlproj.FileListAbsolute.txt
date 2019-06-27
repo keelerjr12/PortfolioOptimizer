@@ -1,6 +1,0 @@
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Debug\FinanceDB.dacpac
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Debug\FinanceDB.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Debug\FinanceDB.pdb
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\obj\Debug\FinanceDB.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\obj\Debug\FinanceDB.pdb
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\obj\Debug\FinanceDB.sqlprojAssemblyReference.cache

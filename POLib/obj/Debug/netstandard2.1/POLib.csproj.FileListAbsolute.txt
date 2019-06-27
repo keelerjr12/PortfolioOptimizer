@@ -1,9 +1,0 @@
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\bin\Debug\netstandard2.1\POLib.deps.json
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\bin\Debug\netstandard2.1\POLib.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\bin\Debug\netstandard2.1\POLib.pdb
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.csproj.CoreCompileInputs.cache
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.AssemblyInfoInputs.cache
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.AssemblyInfo.cs
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.pdb
-C:\Users\Joshua\source\repos\PortfolioOptimizer\POLib\obj\Debug\netstandard2.1\POLib.csprojAssemblyReference.cache

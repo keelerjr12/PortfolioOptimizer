@@ -1,5 +1,0 @@
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Release\FinanceDB.dacpac
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Release\FinanceDB.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\bin\Release\FinanceDB.pdb
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\obj\Release\FinanceDB.dll
-C:\Users\Joshua\source\repos\PortfolioOptimizer\FinanceDB\obj\Release\FinanceDB.pdb
