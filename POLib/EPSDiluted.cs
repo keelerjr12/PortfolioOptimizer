@@ -8,7 +8,7 @@ namespace POLib.SECScraper
     public class EPSDiluted
     {
         [Key, Column(Order = 0)]
-        public string Ticker { get; set; }
+        public string? Ticker { get; set; }
         [Key, Column(Order = 1)]
         public DateTime QuarterEnd { get; set; }
         public decimal EPS { get; set; }

@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioOptimizerLibTests", "PortfolioOptimizerLibTests\PortfolioOptimizerLibTests.csproj", "{06BD3270-2B34-4AE4-961E-84B402868093}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FinanceDB", "FinanceDB\FinanceDB.sqlproj", "{5391EE4A-9501-4485-9BE5-32B47877A182}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioOptimizerCUI", "PortfolioOptimizerCUI\PortfolioOptimizerCUI.csproj", "{5FC5692D-61D1-4BD8-BF87-3E18F5656AEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POLib", "POLib\POLib.csproj", "{F55C4978-9C28-4FDD-854D-E41CA9B850C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POLib", "POLib\POLib.csproj", "{F55C4978-9C28-4FDD-854D-E41CA9B850C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POLibTests", "POLibTests\POLibTests.csproj", "{A9C94F66-E1F0-4FDF-B953-A8574F9BC770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POLibTests", "POLibTests\POLibTests.csproj", "{A9C94F66-E1F0-4FDF-B953-A8574F9BC770}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06BD3270-2B34-4AE4-961E-84B402868093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06BD3270-2B34-4AE4-961E-84B402868093}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06BD3270-2B34-4AE4-961E-84B402868093}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06BD3270-2B34-4AE4-961E-84B402868093}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5391EE4A-9501-4485-9BE5-32B47877A182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5391EE4A-9501-4485-9BE5-32B47877A182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5391EE4A-9501-4485-9BE5-32B47877A182}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

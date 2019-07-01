@@ -14,7 +14,12 @@ namespace PortfolioOptimizerCUI.Services
         public ConsumerPriceIndex GetConsumerPriceIndex(DateTime date)
         {
             var monthAndYear = new DateTime(date.Year, date.Month, 1);
-            return _financeContext.ConsumerPriceIndex.Find(monthAndYear);
+            var cpi = _financeContext?.ConsumerPriceIndex?.Find(monthAndYear);
+
+            if (cpi == null)
+                throw new Exception($"CPI for {date} does not exist");
+
+            return cpi;
         }
 
         public IList<ConsumerPriceIndex> GetConsumerPriceIndex(DateTime dateFrom, DateTime dateTo)

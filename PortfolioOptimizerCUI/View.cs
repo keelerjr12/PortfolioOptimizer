@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PortfolioOptimizerCUI
 {
@@ -14,7 +15,7 @@ namespace PortfolioOptimizerCUI
         {
             var input = Console.ReadLine();
             var tokens = input?.Split();
-            return tokens;
+            return tokens == null ? new List<string>() : tokens.ToList();
         }
     }
 }

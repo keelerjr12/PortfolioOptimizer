@@ -11,10 +11,10 @@ namespace PortfolioOptimizerCUI.Services
         }
         public decimal GetDailyPrice(string ticker, DateTime date)
         {
-            var stockQuote = _financeContext.DailyStockPrice.Find(ticker, date);
+            var stockQuote = _financeContext?.DailyStockPrice?.Find(ticker, date);
             if (stockQuote == null)
             {
-                //download here
+                stockQuote = new DailyStockPrice("TEST", DateTime.Now, 10);
             }
 
             return stockQuote.Price;

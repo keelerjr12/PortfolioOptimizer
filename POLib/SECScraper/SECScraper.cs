@@ -39,14 +39,17 @@ namespace POLib.SECScraper
 
             foreach (var link in reportLinks)
             {
-                url = "https://www.sec.gov" + link;
+                url = SEC_HOSTNAME + link;
                 //Console.WriteLine(url);
 
                 var fdBody = ReadHTML(url).Result;
                 var fdPage = new FilingDetailsPage(fdBody);
 
                 var xbrlLink = fdPage.GetInstanceDocumentLink();
-                //Console.WriteLine(xbrlLink);
+                Console.WriteLine(xbrlLink);
+
+                var xbrlBody = ReadHTML(SEC_HOSTNAME + xbrlLink).Result;
+                var xbrlDoc = new XBRLDocument(xbrlBody);
             }
 
             _numDownloaded++;
@@ -55,10 +58,8 @@ namespace POLib.SECScraper
 
         private async Task<string> ReadHTML(string url)
         {
-            var response = await _client.GetAsync(url);
-            var body = await response.Content.ReadAsStringAsync();
-
-            return body;
+            using var response = await _client.GetAsync(url);
+            return await response.Content.ReadAsStringAsync();
         }
 
         private void DisplayLoadingText()
@@ -69,8 +70,11 @@ namespace POLib.SECScraper
             }
         }
 
+        private const string SEC_HOSTNAME = "https://www.sec.gov";
+
         private readonly HttpClient _client;
         private readonly FinanceContext _financeContext;
+
         private int _numDownloaded;
         private int _interval;
     }

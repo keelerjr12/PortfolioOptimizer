@@ -28,28 +28,37 @@ namespace PortfolioOptimizerCUI
                 {
                     case "CAPE":
                     {
-                        var capeService = _serviceProvider.GetService<CAPEService>();
-                        var date = Convert.ToDateTime(args[1]);
-                        var cape = capeService.GetCAPE(args[0], date);
-                        _view.Show(cape + "\n");
+                        if (args != null)
+                        {
+                            var capeService = _serviceProvider.GetService<CAPEService>();
+                            var date = Convert.ToDateTime(args[1]);
+                            var cape = capeService.GetCAPE(args[0], date);
+                            _view.Show(cape + "\n");
+                        }
                     }
                         break;
 
                     case "CPI":
                     {
-                        var cpiService = _serviceProvider.GetService<ConsumerPriceIndexService>();
-                        var date = Convert.ToDateTime(args[0]);
-                        var cpi = cpiService.GetConsumerPriceIndex(date);
-                        _view.Show(cpi.CPI + "\n");
+                        if (args != null)
+                        {
+                            var cpiService = _serviceProvider.GetService<ConsumerPriceIndexService>();
+                            var date = Convert.ToDateTime(args[0]);
+                            var cpi = cpiService.GetConsumerPriceIndex(date);
+                            _view.Show(cpi.CPI + "\n");
+                        }
                     }
                         break;
 
                     case "DilutedEPS":
                     {
-                        var epsService = _serviceProvider.GetService<DilutedEPSService>();
-                        var date = Convert.ToDateTime(args[1]);
-                        var eps = epsService.GetDilutedEPS(args[0], date);
-                        _view.Show(eps.EPS + "\n");
+                        if (args != null)
+                        {
+                            var epsService = _serviceProvider.GetService<DilutedEPSService>();
+                            var date = Convert.ToDateTime(args[1]);
+                            var eps = epsService.GetDilutedEPS(args[0], date);
+                            _view.Show(eps.EPS + "\n");
+                        }
                     }
                         break;
 

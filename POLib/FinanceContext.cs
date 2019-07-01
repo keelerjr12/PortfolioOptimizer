@@ -14,9 +14,9 @@ namespace POLib.SECScraper
             modelBuilder.Entity<DailyStockPrice>()
                 .HasKey(e => new { e.Ticker, e.Date });
         }
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<DailyStockPrice> DailyStockPrice { get; set; }
-        public DbSet<ConsumerPriceIndex> ConsumerPriceIndex { get; set; }
-        public DbSet<EPSDiluted> EPSDiluted { get; set; }
+        public DbSet<Company>? Companies { get; set; }
+        public DbSet<DailyStockPrice>? DailyStockPrice { get; set; }
+        public DbSet<ConsumerPriceIndex>? ConsumerPriceIndex { get; set; }
+        public DbSet<EPSDiluted>? EPSDiluted { get; set; }
     }
 }

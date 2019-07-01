@@ -9,9 +9,9 @@ namespace POLib.SECScraper
         public DateTime QuarterEnd { get; set; }
 
         [Name("Split factor")]
-        public double SplitFactor { get; set; }
+        public double? SplitFactor { get; set; }
 
         [Name("EPS diluted")]
-        public string EPS_Diluted { get; set; }
+        public string? EPS_Diluted { get; set; }
     }
 }

@@ -53,8 +53,8 @@ namespace POLib.SECScraper
 
                     }
 
-                    _financeContext.EPSDiluted.AddRange(epsList);
-                    _financeContext.SaveChanges();
+                    _financeContext?.EPSDiluted?.AddRange(epsList);
+                    _financeContext?.SaveChanges();
                 }
 
                 sr.Close();
@@ -72,11 +72,7 @@ namespace POLib.SECScraper
             while ((line = file.ReadLine()) != null)
             {
                 var tokens = line.Split();
-                var metadata = new TickerMetadata
-                {
-                    Ticker = tokens[0],
-                    Url = tokens[1]
-                };
+                var metadata = new TickerMetadata(tokens[0], tokens[1]);
 
                 metadataList.Add(metadata);
             }

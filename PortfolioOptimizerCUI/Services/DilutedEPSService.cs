@@ -14,13 +14,17 @@ namespace PortfolioOptimizerCUI.Services
 
         public EPSDiluted GetDilutedEPS(string ticker, DateTime date)
         {
-            return _financeContext.EPSDiluted.Find(ticker, date);
+            var eps = _financeContext?.EPSDiluted?.Find(ticker, date);
+            if (eps == null)
+                throw new Exception($"EPS for {ticker} and {date} does not exist");
+            return eps;
         }
 
         public IList<EPSDiluted> GetDilutedEPS(string ticker, DateTime dateFrom, DateTime dateTo)
         {
             var dateFromStartOfMonth = new DateTime(dateFrom.Year, dateFrom.Month, 1);
-            return _financeContext.EPSDiluted.Where(eps => eps.Ticker == ticker && eps.QuarterEnd >= dateFrom && eps.QuarterEnd <= dateTo).ToList();
+            var epsList = _financeContext?.EPSDiluted.Where(eps => eps.Ticker == ticker && eps.QuarterEnd >= dateFrom && eps.QuarterEnd <= dateTo).ToList();
+            return epsList ?? new List<EPSDiluted>();
         }
 
         private readonly FinanceContext _financeContext;
