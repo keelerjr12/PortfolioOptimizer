@@ -1,5 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using HtmlAgilityPack;
+using System.Linq;
 
 namespace POLib.SECScraper
 {
@@ -13,21 +14,27 @@ namespace POLib.SECScraper
 
         public string GetInstanceDocumentLink()
         {
-            var tableNode = _doc.DocumentNode.SelectNodes("//table[@summary='Data Files']/tr");
-            var rows = tableNode.Skip(1);
+            var link = "";
+            var tableRows = GetTableRows();
 
-            foreach (var row in rows)
+            foreach (var row in tableRows)
             {
-                var type = row.ChildNodes[7].InnerText;
+                var fdpTableRow = new FilingDetailsPageTableRow(row);
 
-                if (type != "XML" && type != "EX-101.INS")
-                    continue;
-
-                var link = row.ChildNodes[5].Element("a").GetAttributeValue("href", "");
-                return link;
+                if (fdpTableRow.IsInstanceDocument())
+                {
+                    link = fdpTableRow.GetLink();
+                    break;
+                }
             }
 
-            return "";
+            return link;
+        }
+
+        private IEnumerable<HtmlNode> GetTableRows()
+        {
+            var tableNode = _doc.DocumentNode.SelectNodes("//table[@summary='Data Files']/tr");
+            return tableNode.Skip(1);
         }
 
         private readonly HtmlDocument _doc;

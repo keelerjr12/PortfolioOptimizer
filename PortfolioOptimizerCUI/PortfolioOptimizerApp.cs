@@ -6,7 +6,7 @@
         {
             _controller = controller;
         }
-        
+
         public void Run()
         {
             _controller.Run();

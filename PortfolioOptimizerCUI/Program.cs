@@ -1,9 +1,9 @@
-﻿using System.Configuration;
-using System.Net.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PortfolioOptimizerCUI.Services;
 using POLib.SECScraper;
+using PortfolioOptimizerCUI.Services;
+using System.Configuration;
+using System.Net.Http;
 
 namespace PortfolioOptimizerCUI
 {

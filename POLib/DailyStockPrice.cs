@@ -4,11 +4,11 @@ namespace POLib.SECScraper
 {
     public class DailyStockPrice
     {
-        public string Ticker { get; }
+        public string Ticker { get; set; }
 
-        public DateTime Date { get; }
+        public DateTime Date { get; set; }
 
-        public decimal Price { get; }
+        public decimal Price { get; set; }
 
         public DailyStockPrice(string ticker, DateTime date, decimal price)
         {

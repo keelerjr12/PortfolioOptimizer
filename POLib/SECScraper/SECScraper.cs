@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +8,8 @@ namespace POLib.SECScraper
 {
     public class SECScraper
     {
+        public event EventHandler<ProgressChangedEventArgs> ProgressChangedEvent;
+
         public SECScraper(HttpClient client, FinanceContext financeContext)
         {
             _client = client;
@@ -16,14 +19,18 @@ namespace POLib.SECScraper
         public void Download()
         {
             _numDownloaded = 0;
-            _interval = _financeContext.Companies.Count() / 10;
+            _interval = _financeContext.Companies.Count() / 100;
 
-            Parallel.ForEach(_financeContext.Companies, new ParallelOptions {MaxDegreeOfParallelism = 6},
+            Parallel.ForEach(_financeContext.Companies, new ParallelOptions { MaxDegreeOfParallelism = 8 },
                 company =>
                 {
                     RetrieveSECData(company.CIK);
-                    Task.Delay(175);
                 });
+        }
+
+        protected virtual void OnProgressChanged(ProgressChangedEventArgs e)
+        {
+            ProgressChangedEvent?.Invoke(this, e);
         }
 
         private void RetrieveSECData(int cik)
@@ -40,20 +47,20 @@ namespace POLib.SECScraper
             foreach (var link in reportLinks)
             {
                 url = SEC_HOSTNAME + link;
-                //Console.WriteLine(url);
 
                 var fdBody = ReadHTML(url).Result;
                 var fdPage = new FilingDetailsPage(fdBody);
-
                 var xbrlLink = fdPage.GetInstanceDocumentLink();
-                Console.WriteLine(xbrlLink);
 
                 var xbrlBody = ReadHTML(SEC_HOSTNAME + xbrlLink).Result;
                 var xbrlDoc = new XBRLDocument(xbrlBody);
+                var epsData = xbrlDoc.GetAllEPSData();
+
+                //foreach (var eps in epsData)
+                //    Console.WriteLine($"{eps.StartDate} to {eps.EndDate} -- {eps.EPS}");
             }
 
-            _numDownloaded++;
-            DisplayLoadingText();
+            IncrementNumDownloadedAndNotify();
         }
 
         private async Task<string> ReadHTML(string url)
@@ -62,13 +69,17 @@ namespace POLib.SECScraper
             return await response.Content.ReadAsStringAsync();
         }
 
-        private void DisplayLoadingText()
+        private void IncrementNumDownloadedAndNotify()
         {
-            if (_numDownloaded % _interval == 0)
-            {
-                Console.WriteLine(_numDownloaded / _interval * 10 + "% downloaded");
-            }
+            _numDownloaded++;
+
+            if (_numDownloaded % _interval != 0)
+                return;
+
+            var percentDownloaded = _numDownloaded / _interval;
+            OnProgressChanged(new ProgressChangedEventArgs(percentDownloaded, this));
         }
+
 
         private const string SEC_HOSTNAME = "https://www.sec.gov";
 

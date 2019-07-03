@@ -1,5 +1,5 @@
-﻿using System;
-using CsvHelper.Configuration.Attributes;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 
 namespace POLib.SECScraper
 {

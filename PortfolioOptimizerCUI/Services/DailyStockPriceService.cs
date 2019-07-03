@@ -1,5 +1,5 @@
-﻿using System;
-using POLib.SECScraper;
+﻿using POLib.SECScraper;
+using System;
 
 namespace PortfolioOptimizerCUI.Services
 {

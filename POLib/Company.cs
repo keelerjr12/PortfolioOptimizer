@@ -6,23 +6,14 @@ namespace POLib.SECScraper
     [Table("Company")]
     public class Company
     {
-        public Guid Id { get; }
+        public Guid Id { get; set; }
 
-        public string Ticker { get; }
+        public string? Ticker { get; set; }
 
-        public string Name { get; }
+        public string? Name { get; set; }
 
-        public int SectorId { get; }
+        public int SectorId { get; set; }
 
-        public int CIK { get; }
-
-        public Company(Guid id, string ticker, string name, int sectorId, int cik)
-        {
-            Id = id;
-            Ticker = ticker;
-            Name = name;
-            SectorId = sectorId;
-            CIK = cik;
-        }
+        public int CIK { get; set; }
     }
 }

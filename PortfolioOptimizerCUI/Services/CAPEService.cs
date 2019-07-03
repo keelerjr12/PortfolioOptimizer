@@ -30,7 +30,7 @@ namespace PortfolioOptimizerCUI.Services
                 var cpi = cpiList.First(c => c.Date == epsStartOfMonth).CPI;
                 var adjEPS = decimal.ToDouble(eps.EPS) / cpi * currCPI;
                 e10Sum += adjEPS;
-                Console.WriteLine("DATE: {0}, EPS: {1}, CPI: {2}, ADJ_EPS: {3}",  epsStartOfMonth, eps.EPS, cpi, adjEPS);
+                Console.WriteLine("DATE: {0}, EPS: {1}, CPI: {2}, ADJ_EPS: {3}", epsStartOfMonth, eps.EPS, cpi, adjEPS);
             }
 
             var e10 = e10Sum / 10;

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using HtmlAgilityPack;
+using System.Collections.Generic;
 using System.Linq;
-using HtmlAgilityPack;
 
 namespace POLib.SECScraper
 {
@@ -10,31 +10,37 @@ namespace POLib.SECScraper
         {
             _doc = new HtmlDocument();
             _doc.LoadHtml(html);
+
+            _reportLinks = new List<string>();
         }
 
         public IList<string> GetAllReportLinks()
         {
+            var tableRows = GetTableRows();
+
+            foreach (var row in tableRows)
+                GetReportLinkAndAddToCollection(row);
+
+            return _reportLinks;
+        }
+
+        private IEnumerable<HtmlNode> GetTableRows()
+        {
             var node = _doc.DocumentNode.SelectSingleNode("//table[@class='tableFile2']");
-            var rows = node?.Elements("tr").Skip(1);
+            return node == null ? new List<HtmlNode>() : node.Elements("tr").Skip(1);
+        }
 
-            var reportLinks = new List<string>();
+        private void GetReportLinkAndAddToCollection(HtmlNode row)
+        {
+            var links = row.ChildNodes.Descendants("a").ToList();
+            if (links.Count() < 3)
+                return;
 
-            if (rows == null)
-                return reportLinks;
-
-            foreach (var row in rows)
-            {
-                var links = row.ChildNodes.Descendants("a").ToList();
-                if (links.Count() < 3)
-                    continue;
-
-                var documentLink = links[0].GetAttributeValue("href", "");
-                reportLinks.Add(documentLink);
-            }
-
-            return reportLinks;
+            var documentLink = links[0].GetAttributeValue("href", "");
+            _reportLinks.Add(documentLink);
         }
 
         private readonly HtmlDocument _doc;
+        private readonly List<string> _reportLinks;
     }
 }

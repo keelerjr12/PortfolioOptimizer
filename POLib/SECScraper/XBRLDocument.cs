@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
-using HtmlAgilityPack;
 
 namespace POLib.SECScraper
 {
@@ -10,27 +9,56 @@ namespace POLib.SECScraper
     {
         public XBRLDocument(string page)
         {
-            _doc = new XmlDocument();
-            //_nsmgr = new XmlNamespaceManager(_doc.NameTable);
-            //_nsmgr.AddNamespace("xbrli", "http://www.xbrl.org/2003/instance");
-            //_nsmgr.AddNamespace("us-gaap", "http://xbrl.us/us-gaap/2009-01-31");
-
-            _doc.LoadXml(page);
-            _test = XElement.Parse(page);
+            _doc = XElement.Parse(page);
         }
+
         public IList<EPSDataPoint> GetAllEPSData()
         {
-            var epsNodes = _test.Descendants().Where(d => d.Name.LocalName == "EarningsPerShareDiluted").ToList();
-            var eps = epsNodes?[0].Value;
-            var ctxRef = epsNodes?[0].Attribute("contextRef")?.Value;
+            var epsDataPoints = new List<EPSDataPoint>();
+            var epsElements = GetAllEPSElements();
 
-            return new List<EPSDataPoint>();
+            foreach (var epsElement in epsElements)
+            {
+                var ctxRef = epsElement.Attribute("contextRef")?.Value;
+
+                if (ctxRef == null)
+                    continue;
+
+                var ctxRefEl = GetContextRefElement(ctxRef);
+
+                var startDate = GetStartDate(ctxRefEl);
+                var endDate = GetEndDate(ctxRefEl);
+                var eps = decimal.Parse(epsElement.Value);
+
+                var epsDP = new EPSDataPoint(startDate, endDate, eps);
+                epsDataPoints.Add(epsDP);
+            }
+
+            return epsDataPoints;
         }
 
+        private IEnumerable<XElement> GetAllEPSElements()
+        {
+            return _doc.Descendants().Where(d => d.Name.LocalName == "EarningsPerShareDiluted");
+        }
 
-        private readonly XmlDocument _doc;
+        private XElement GetContextRefElement(string contextRef)
+        {
+            return _doc.Descendants().First(d => d.Name.LocalName == "context" && d.Attribute("id")?.Value == contextRef);
+        }
 
-        private readonly XElement _test;
-        // private readonly XmlNamespaceManager _nsmgr;
+        private static DateTime GetStartDate(XElement ctxRefEl)
+        {
+            var date = ctxRefEl.Descendants().First(e => e.Name.LocalName == "startDate").Value;
+            return DateTime.Parse(date);
+        }
+
+        private static DateTime GetEndDate(XElement ctxRefEl)
+        {
+            var date = ctxRefEl.Descendants().First(e => e.Name.LocalName == "endDate").Value;
+            return DateTime.Parse(date);
+        }
+
+        private readonly XElement _doc;
     }
 }
