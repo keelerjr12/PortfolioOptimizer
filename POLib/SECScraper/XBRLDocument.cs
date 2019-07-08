@@ -12,7 +12,10 @@ namespace POLib.SECScraper
             _doc = XElement.Parse(page);
         }
 
-        public IList<EPSDataPoint> GetAllEPSData()
+        /*
+         * TODO: Add Quarterly Report Check
+         */
+        public IList<EPSDataPoint> GetAllQuarterlyEPSData()
         {
             var epsDataPoints = new List<EPSDataPoint>();
             var epsElements = GetAllEPSElements();
@@ -39,7 +42,8 @@ namespace POLib.SECScraper
 
         private IEnumerable<XElement> GetAllEPSElements()
         {
-            return _doc.Descendants().Where(d => d.Name.LocalName == "EarningsPerShareDiluted");
+            return _doc.Descendants().Where(d => d.Name.LocalName == "EarningsPerShareDiluted" || 
+                                                 d.Name.LocalName == "EarningsPerShareBasicAndDiluted");
         }
 
         private XElement GetContextRefElement(string contextRef)
@@ -57,6 +61,11 @@ namespace POLib.SECScraper
         {
             var date = ctxRefEl.Descendants().First(e => e.Name.LocalName == "endDate").Value;
             return DateTime.Parse(date);
+        }
+
+        private object ParseEPSDataPoints(XElement ctxRefEl)
+        {
+            throw new NotImplementedException();
         }
 
         private readonly XElement _doc;

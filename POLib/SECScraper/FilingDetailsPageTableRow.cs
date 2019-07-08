@@ -15,7 +15,7 @@ namespace POLib.SECScraper
         public bool IsInstanceDocument()
         {
             var docType = GetDocumentType();
-            return docType != "XML" && docType != "EX-101.INS";
+            return docType == "XML" || docType == "EX-101.INS";
         }
 
         private string GetDocumentType()

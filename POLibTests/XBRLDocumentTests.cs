@@ -1,5 +1,6 @@
 ﻿using POLib.SECScraper;
 using System;
+using NodaTime;
 using Xunit;
 
 namespace POLibTests
@@ -52,15 +53,15 @@ namespace POLibTests
         [Fact]
         public void XBRLDocument_EPS_HasValidStartDate()
         {
-            var epsData = xbrlDoc.GetAllEPSData();
-            Assert.Equal(new DateTime(2008, 01, 1), epsData[0].StartDate);
+            var epsData = xbrlDoc.GetAllQuarterlyEPSData();
+            Assert.Equal(new LocalDate(2008, 01, 1), epsData[0].DateInterval.Start);
         }
 
         [Fact]
         public void XBRLDocument_EPS_HasValidEndDate()
         {
-            var epsData = xbrlDoc.GetAllEPSData();
-            Assert.Equal(new DateTime(2008, 06, 30), epsData[0].EndDate);
+            var epsData = xbrlDoc.GetAllQuarterlyEPSData();
+            Assert.Equal(new LocalDate(2008, 06, 30), epsData[0].DateInterval.End);
         }
     }
 }

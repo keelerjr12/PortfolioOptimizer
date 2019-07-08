@@ -4,6 +4,7 @@ using POLib.SECScraper;
 using PortfolioOptimizerCUI.Services;
 using System.Configuration;
 using System.Net.Http;
+using POLib.Http;
 
 namespace PortfolioOptimizerCUI
 {
@@ -18,6 +19,7 @@ namespace PortfolioOptimizerCUI
             collection.AddScoped<View>();
 
             collection.AddScoped<HttpClient>();
+            collection.AddScoped<IHttpClient, RateLimitedHttpClient>();
 
             collection.AddTransient<CAPEService>();
             collection.AddTransient<ConsumerPriceIndexService>();
