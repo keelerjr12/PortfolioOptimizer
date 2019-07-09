@@ -1,5 +1,5 @@
-using POLib.SECScraper;
 using System.Collections.Generic;
+using POLib.SECScraper.EPS;
 using Xunit;
 
 namespace POLibTests

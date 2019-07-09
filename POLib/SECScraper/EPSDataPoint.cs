@@ -1,5 +1,4 @@
-﻿using System;
-using NodaTime;
+﻿using NodaTime;
 
 namespace POLib.SECScraper
 {
@@ -9,12 +8,9 @@ namespace POLib.SECScraper
 
         public decimal EPS { get; }
 
-        public EPSDataPoint(DateTime startDate, DateTime endDate, decimal eps)
+        public EPSDataPoint(LocalDate startDate, LocalDate endDate, decimal eps)
         {
-            var startDateLD = new LocalDate(startDate.Year, startDate.Month, startDate.Day);
-            var endDateLD = new LocalDate(endDate.Year, endDate.Month, endDate.Day);
-
-            DateInterval = new DateInterval(startDateLD, endDateLD);
+            DateInterval = new DateInterval(startDate, endDate);
             EPS = eps;
         }
     }

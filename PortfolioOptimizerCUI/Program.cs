@@ -5,6 +5,7 @@ using PortfolioOptimizerCUI.Services;
 using System.Configuration;
 using System.Net.Http;
 using POLib.Http;
+using POLib.SECScraper.EPS;
 
 namespace PortfolioOptimizerCUI
 {
@@ -26,6 +27,7 @@ namespace PortfolioOptimizerCUI
             collection.AddTransient<DilutedEPSService>();
             collection.AddTransient<DailyStockPriceService>();
 
+            collection.AddTransient<EPSDownloader>();
             collection.AddTransient<SECScraper>();
             collection.AddTransient<StockDownloader>();
 

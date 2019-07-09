@@ -1,6 +1,5 @@
-﻿using POLib.SECScraper;
-using System;
-using NodaTime;
+﻿using NodaTime;
+using POLib.SECScraper.EPS;
 using Xunit;
 
 namespace POLibTests
@@ -45,7 +44,7 @@ namespace POLibTests
                                 <xbrli:endDate>2008-06-30</xbrli:endDate>
                             </xbrli:period>
                         </xbrli:context>
-                    <us-gaap:EarningsPerShareDiluted contextRef='D2008Q2YTD' decimals='2' unitRef='USDPerShare'>1.45</us-gaap:EarningsPerShareDiluted>
+                    <us-gaap:EarningsPerShareDiluted contextRef='D2008Q2' decimals='2' unitRef='USDPerShare'>1.45</us-gaap:EarningsPerShareDiluted>
                 </xbrli:xbrl>";
 
         private XBRLDocument xbrlDoc = new XBRLDocument(xml);
@@ -54,7 +53,7 @@ namespace POLibTests
         public void XBRLDocument_EPS_HasValidStartDate()
         {
             var epsData = xbrlDoc.GetAllQuarterlyEPSData();
-            Assert.Equal(new LocalDate(2008, 01, 1), epsData[0].DateInterval.Start);
+            Assert.Equal(new LocalDate(2008, 04, 1), epsData[0].DateInterval.Start);
         }
 
         [Fact]
